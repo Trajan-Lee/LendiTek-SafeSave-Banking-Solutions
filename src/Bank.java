@@ -163,6 +163,8 @@ public class Bank {
     	accounts.add(account);
     }
     
+
+    //Overloading to account for programs that input a string or a double amount
     public void newTransaction(String accountId, double amount) {
     	String innerTransactionId = nextTransactionId();
     	Account innerAccount = getAccountById(accountId);
@@ -177,6 +179,24 @@ public class Bank {
     	}
     	
     	Transaction transaction = new Transaction(innerTransactionId, innerAccount, amount, date, innerType);
+    	transactions.add(transaction);
+    	System.out.println(innerAccount.getBalance());
+    }
+    public void newTransaction(String accountId, String amount) {
+    	String innerTransactionId = nextTransactionId();
+    	Account innerAccount = getAccountById(accountId);
+    	LocalDateTime date = LocalDateTime.now();
+    	String innerType;
+        double innerAmount = Double.parseDouble(amount);
+    	if (innerAmount >= 0) {
+    		innerType = "Deposit";
+    		innerAccount.deposit(innerAmount);
+    	} else {
+    		innerType = "Withdrawal";
+    		innerAccount.withdraw(innerAmount);
+    	}
+    	
+    	Transaction transaction = new Transaction(innerTransactionId, innerAccount, innerAmount, date, innerType);
     	transactions.add(transaction);
     	System.out.println(innerAccount.getBalance());
     }
