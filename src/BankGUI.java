@@ -180,7 +180,7 @@ public class BankGUI extends JFrame{
 		JLabel accountIdLabel = new JLabel("Account ID");
 		JComboBox<String> accountIdComboBox = new JComboBox<>();
 		JLabel transactionIdLabel = new JLabel("Transaction Number");
-		JLabel returnIdLabel = new JLabel(bank.nextAccountId());
+		JLabel returnIdLabel = new JLabel(bank.nextTransactionId());
 		JLabel balanceLabel = new JLabel("Balance: ");
 		JLabel balanceValueLabel = new JLabel();
 		JLabel amountLabel = new JLabel("Transaction amount(negative{-} for withdrawal)");
@@ -217,7 +217,7 @@ public class BankGUI extends JFrame{
 	    	double amount = Double.parseDouble(amountField.getText());
 	    	System.out.println(amount);
 	    	bank.newTransaction(accountId, amount);
-			JOptionPane.showMessageDialog(this, "Transaction complete");
+			JOptionPane.showMessageDialog(this, "Transaction complete, New Balance is: $" + bank.getAccountById(accountId).getBalance());
 			bank.saveAll();
 			switchPanel((JPanel) panel.getParent(), "Menu");
 	    });

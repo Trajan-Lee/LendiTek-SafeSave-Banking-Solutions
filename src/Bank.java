@@ -77,7 +77,7 @@ public class Bank {
             int newId = lastId + 1;
             return String.valueOf(newId);
         } else {
-            // Handle case where the accounts list is empty
+            // Handle case where the customers list is empty
             return "1";
         }
     }
@@ -103,7 +103,7 @@ public class Bank {
             int newId = lastId + 1;
             return String.valueOf(newId);
         } else {
-            // Handle case where the accounts list is empty
+            // Handle case where the transactions list is empty
             return "1";
         }
     }
